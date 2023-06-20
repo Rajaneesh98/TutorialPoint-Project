@@ -1,7 +1,7 @@
 package com.course.CourseService.controller;
 
 import com.course.CourseService.entity.Course;
-import com.course.CourseService.CourseServicePakg.CourseServiceInterface;
+import com.course.CourseService.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class CourseController {
 
     @Autowired
-    private CourseServiceInterface service;
+    private CourseService courseService;
 
-    @PostMapping("/course")
+    @PostMapping("/course/addCourse")
     public ResponseEntity<Course> saveDepartment(@RequestBody Course course){
-        Course savedCourse = service.save(course);
+        Course savedCourse = courseService.save(course);
         return new ResponseEntity<>(course, HttpStatus.OK);
     }
 
